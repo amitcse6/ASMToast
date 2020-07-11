@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ASMToast_Example' do
+  pod 'ASMToast', :path => '../'
+
+  target 'ASMToast_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+  end
+end
