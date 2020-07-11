@@ -1,0 +1,27 @@
+PODS:
+  - ASMToast (0.1.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+
+DEPENDENCIES:
+  - ASMToast (from `../`)
+  - FBSnapshotTestCase (~> 2.1.4)
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  ASMToast:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ASMToast: a9b06aea882f1957cf02734d2a18da27f6f3f191
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+
+PODFILE CHECKSUM: a5210b71b568cbaf53779210d7a47e39d94b8a65
+
+COCOAPODS: 1.9.1

@@ -1,0 +1,22 @@
+{
+  "name": "ASMToast",
+  "version": "0.1.0",
+  "summary": "A short description of ASMToast.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/amitpstu1@gmail.com/ASMToast",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "amitpstu1@gmail.com": "amitpstu1@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/amitpstu1@gmail.com/ASMToast.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ASMToast/Classes/**/*"
+}
