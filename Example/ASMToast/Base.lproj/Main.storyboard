@@ -20,17 +20,35 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWI-DL-IoM">
-                                <rect key="frame" x="148" y="318.5" width="79" height="30"/>
-                                <state key="normal" title="Show Toast"/>
+                                <rect key="frame" x="127" y="318.5" width="121" height="30"/>
+                                <state key="normal" title="Medium Message"/>
                                 <connections>
-                                    <action selector="showMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ien-fR-N0F"/>
+                                    <action selector="mediumMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xoq-T1-kXQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-fN-nBL">
+                                <rect key="frame" x="135.5" y="280" width="104" height="30"/>
+                                <state key="normal" title="Short Message"/>
+                                <connections>
+                                    <action selector="shortMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="87s-sh-D4a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1s-EP-xkU">
+                                <rect key="frame" x="135" y="356" width="105" height="30"/>
+                                <state key="normal" title="Large Message"/>
+                                <connections>
+                                    <action selector="largeMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="k0h-W5-rPD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fWI-DL-IoM" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="0uF-ge-qPn"/>
+                            <constraint firstItem="t1s-EP-xkU" firstAttribute="top" secondItem="fWI-DL-IoM" secondAttribute="bottom" constant="7.5" id="QX5-Yw-dRB"/>
                             <constraint firstItem="fWI-DL-IoM" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="pFx-va-eSL"/>
+                            <constraint firstItem="1xQ-fN-nBL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="pdU-QP-fup"/>
+                            <constraint firstItem="fWI-DL-IoM" firstAttribute="top" secondItem="1xQ-fN-nBL" secondAttribute="bottom" constant="8.5" id="tSs-Yp-TE5"/>
+                            <constraint firstItem="t1s-EP-xkU" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="tkE-ig-v9g"/>
                         </constraints>
                     </view>
                 </viewController>

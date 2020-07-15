@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(iOS 9.0, *)
 public class ASMToast: NSObject {
     static var sharedManager: ASMToast?
     
@@ -33,16 +34,13 @@ public class ASMToast: NSObject {
             viewController.view.addSubview(toastView.unsafelyUnwrapped)
             toastView?.translatesAutoresizingMaskIntoConstraints = false
             if #available(iOS 11.0, *) {
-                let leftAnchor = toastView?.leftAnchor.constraint(lessThanOrEqualTo: viewController.view.safeAreaLayoutGuide.leftAnchor, constant: rootPadding)
-                leftAnchor?.priority = UILayoutPriority(rawValue: 250)
-                leftAnchor?.isActive = true
-                let rightAnchor = toastView?.rightAnchor.constraint(lessThanOrEqualTo: viewController.view.safeAreaLayoutGuide.rightAnchor, constant: -rootPadding)
-                rightAnchor?.priority = UILayoutPriority(rawValue: 250)
-                rightAnchor?.isActive = true
+                toastView?.topAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: rootPadding).isActive = true
+                toastView?.leftAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.leftAnchor, constant: rootPadding).isActive = true
+                toastView?.rightAnchor.constraint(lessThanOrEqualTo: viewController.view.safeAreaLayoutGuide.rightAnchor, constant: -rootPadding).isActive = true
                 toastView?.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, constant: -rootPadding).isActive = true
                 toastView?.centerXAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.centerXAnchor).isActive = true
                 
-                let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+                let gesture = ASMToastGestureRecognizer(target: self, action: #selector(onTap))
                 gesture.numberOfTapsRequired = 1
                 toastView?.addGestureRecognizer(gesture)
                 toastView?.isUserInteractionEnabled = true
@@ -65,7 +63,7 @@ public class ASMToast: NSObject {
     }
     
     @objc private func dismissWithAnimation(_ toastView: ASMToastView?) {
-        UIView.animate(withDuration: withDuration, delay: delay, options: [.allowUserInteraction], animations: { () -> Void in
+        UIView.animate(withDuration: withDuration, delay: delay, options: [.allowUserInteraction, .curveEaseIn], animations: { () -> Void in
             toastView?.container?.alpha = 0
         }, completion: { (finished) in
             self.dismiss(toastView)
@@ -73,6 +71,7 @@ public class ASMToast: NSObject {
     }
 }
 
+@available(iOS 9.0, *)
 extension ASMToast {
     public static func show(_ message: String?) {
         if let toast = ASMToast.shared() {
