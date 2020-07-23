@@ -8,9 +8,16 @@
 
 import Foundation
 
+public enum ASMToastAlignment: String {
+    case center
+    case top
+    case bottom
+}
+
 @available(iOS 9.0, *)
 public class ASMToast: NSObject {
     static var sharedManager: ASMToast?
+    public static var toastAlignment: ASMToastAlignment = ASMToastAlignment.bottom
     
     @discardableResult
     static func shared() -> ASMToast? {
@@ -32,12 +39,23 @@ public class ASMToast: NSObject {
         if let viewController = ASMToast.topMostVC {
             toastView = ASMToastView(message)
             viewController.view.addSubview(toastView.unsafelyUnwrapped)
-            toastView?.translatesAutoresizingMaskIntoConstraints = false
+            
             if #available(iOS 11.0, *) {
-                toastView?.topAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: rootPadding).isActive = true
+                toastView?.translatesAutoresizingMaskIntoConstraints = false
+                switch ASMToast.toastAlignment {
+                case .center:
+                    toastView?.topAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: rootPadding).isActive = true
+                    toastView?.bottomAnchor.constraint(lessThanOrEqualTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, constant: -rootPadding).isActive = true
+                    toastView?.centerYAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+                case .top:
+                    toastView?.topAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: rootPadding).isActive = true
+                    toastView?.bottomAnchor.constraint(lessThanOrEqualTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, constant: -rootPadding).isActive = true
+                case .bottom:
+                    toastView?.topAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: rootPadding).isActive = true
+                    toastView?.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, constant: -rootPadding).isActive = true
+                }
                 toastView?.leftAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.leftAnchor, constant: rootPadding).isActive = true
                 toastView?.rightAnchor.constraint(lessThanOrEqualTo: viewController.view.safeAreaLayoutGuide.rightAnchor, constant: -rootPadding).isActive = true
-                toastView?.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, constant: -rootPadding).isActive = true
                 toastView?.centerXAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.centerXAnchor).isActive = true
                 
                 let gesture = ASMToastGestureRecognizer(target: self, action: #selector(onTap))

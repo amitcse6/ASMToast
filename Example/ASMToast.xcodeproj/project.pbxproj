@@ -213,10 +213,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QX8DTNY7MR;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QX8DTNY7MR;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -497,6 +499,7 @@
 			baseConfigurationReference = 1574E06DDDD65BCCE2B746C4 /* Pods-ASMToast_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QX8DTNY7MR;
 				INFOPLIST_FILE = ASMToast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -512,6 +515,7 @@
 			baseConfigurationReference = 8A2325B83CEDD3586FAC4D48 /* Pods-ASMToast_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QX8DTNY7MR;
 				INFOPLIST_FILE = ASMToast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -526,6 +530,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD94D9B09417FD23ABDE8C53 /* Pods-ASMToast_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = QX8DTNY7MR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -548,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E069A7AE19CD7AB8CF785BA3 /* Pods-ASMToast_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = QX8DTNY7MR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

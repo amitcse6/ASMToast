@@ -58,7 +58,8 @@ public class ASMToastView: UIView {
         myScrollView?.isScrollEnabled=true
         myScrollView?.bounces = true
         myScrollView?.bouncesZoom = true
-        myScrollView?.alwaysBounceVertical = true
+        myScrollView?.alwaysBounceVertical = false
+        myScrollView?.alwaysBounceHorizontal = false
         
         myStackView = UIStackView()
         myScrollView?.addSubview(myStackView.unsafelyUnwrapped)
