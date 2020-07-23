@@ -12,6 +12,22 @@ Screenshots
 
 ## Example
 
+```swift
+import ASMToast
+
+ASMToast.show("Insert successfully!")
+
+```
+
+## Toast Alignment
+
+```swift
+
+ASMToast.toastAlignment = .bottom
+
+```
+
+
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
