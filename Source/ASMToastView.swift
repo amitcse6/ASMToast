@@ -17,6 +17,7 @@ public class ASMToastView: UIView {
     var iscCornerRadius = true
     var padding: CGFloat = 8
     var message: String?
+    var props: ASMTProps?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,9 +29,10 @@ public class ASMToastView: UIView {
         setup()
     }
     
-    public init(_ message: String?) {
+    public init(_ message: String?, _ props: ASMTProps? = nil) {
         super.init(frame: CGRect.zero)
         self.message = message
+        self.props = props
         setup()
     }
     
@@ -49,6 +51,8 @@ public class ASMToastView: UIView {
     }
     
     public func setupUIElements() {
+        backgroundColor = props?.backgroundColor ?? UIColor.clear
+        
         myScrollView = UIScrollView()
         addSubview(myScrollView.unsafelyUnwrapped)
         myScrollView?.isUserInteractionEnabled = true
@@ -70,16 +74,16 @@ public class ASMToastView: UIView {
         myStackView?.addArrangedSubview(container.unsafelyUnwrapped)
         container?.layer.rasterizationScale = UIScreen.main.scale
         container?.layer.shouldRasterize = true
-        container?.backgroundColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.7)
+        container?.backgroundColor = props?.containerBackgroundColor ?? UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.7)
         setBordeColor(UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0))
         setBordeWidth(1.0)
         
         messageLabel = UILabel()
         container?.addSubview(messageLabel.unsafelyUnwrapped)
-        messageLabel?.numberOfLines = 0
-        messageLabel?.font = UIFont.systemFont(ofSize: 15)
-        messageLabel?.textColor = .white
-        messageLabel?.textAlignment = .center
+        messageLabel?.numberOfLines = props?.numberOfLines ?? 0
+        messageLabel?.font = props?.font ?? UIFont.systemFont(ofSize: 15)
+        messageLabel?.textColor = props?.textColor ?? .white
+        messageLabel?.textAlignment = props?.textAlignment ?? .center
         messageLabel?.text = message ?? ""
     }
     

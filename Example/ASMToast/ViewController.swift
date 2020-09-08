@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func shortMessage(_ sender: Any) {
-        ASMToast.show("Insert successfully!")
+        ASMToast.show("Insert successfully!", ASMTProps(.gray))
     }
     
     @IBAction func mediumMessage(_ sender: Any) {

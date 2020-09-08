@@ -35,14 +35,14 @@ public class ASMToast: NSObject {
     var withDuration: TimeInterval = 3
     var delay: TimeInterval = 1
     
-    private func show(_ message: String?) {
+    private func show(_ message: String?, _ props: ASMTProps? = nil) {
         if let viewController = ASMToast.topMostVC {
-            toastView = ASMToastView(message)
+            toastView = ASMToastView(message, props)
             viewController.view.addSubview(toastView.unsafelyUnwrapped)
             
             if #available(iOS 11.0, *) {
                 toastView?.translatesAutoresizingMaskIntoConstraints = false
-                switch ASMToast.toastAlignment {
+                switch props?.toastAlignment ?? ASMToast.toastAlignment {
                 case .center:
                     toastView?.topAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: rootPadding).isActive = true
                     toastView?.bottomAnchor.constraint(lessThanOrEqualTo: viewController.view.safeAreaLayoutGuide.bottomAnchor, constant: -rootPadding).isActive = true
@@ -91,10 +91,10 @@ public class ASMToast: NSObject {
 
 @available(iOS 9.0, *)
 extension ASMToast {
-    public static func show(_ message: String?) {
+    public static func show(_ message: String?, _ props: ASMTProps? = nil) {
         if let toast = ASMToast.shared() {
             ASMToast.dismiss()
-            toast.show(message)
+            toast.show(message, props)
         }
     }
     

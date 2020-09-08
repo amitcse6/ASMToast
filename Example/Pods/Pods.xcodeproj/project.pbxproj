@@ -12,6 +12,7 @@
 		11C410135C7E89353B480AC8DE0BFB77 /* UIApplication+StrictKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F538C426803AE34255FC6E35B408CCA /* UIApplication+StrictKeyWindow.m */; };
 		14AD81D52FAD9CF2C065C61FB00C3B4F /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = 4568279DE47DC3AB91598E1317503995 /* UIImage+Diff.m */; };
 		14C511527597E5846AB2627F791C7D8E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716A9972B9D9103B54DB950893FAF104 /* QuartzCore.framework */; };
+		2804981D2507786200F90BEC /* ASMTProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2804981C2507786200F90BEC /* ASMTProps.swift */; };
 		282243B624BA2EE900EAA5BF /* ASMToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243B424BA2EE900EAA5BF /* ASMToast.swift */; };
 		282243B724BA2EE900EAA5BF /* ASMToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243B524BA2EE900EAA5BF /* ASMToastView.swift */; };
 		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A78CFFA6D8B8D86CACD733531CB13 /* UIImage+Compare.m */; };
@@ -75,6 +76,7 @@
 		235A78CFFA6D8B8D86CACD733531CB13 /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
 		25741515B94726AB0E5539FE67E7A6EA /* Pods_ASMToast_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASMToast_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277B6BE10C665F515606A22FD60C6DCC /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
+		2804981C2507786200F90BEC /* ASMTProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASMTProps.swift; sourceTree = "<group>"; };
 		282243B424BA2EE900EAA5BF /* ASMToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMToast.swift; sourceTree = "<group>"; };
 		282243B524BA2EE900EAA5BF /* ASMToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMToastView.swift; sourceTree = "<group>"; };
 		284833D18C244D2B42966B6EE425AA59 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				282243B424BA2EE900EAA5BF /* ASMToast.swift */,
 				282243B524BA2EE900EAA5BF /* ASMToastView.swift */,
+				2804981C2507786200F90BEC /* ASMTProps.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				09B11C0C8E482422EA852E5AFABB153B /* ASMToast-dummy.m in Sources */,
 				282243B624BA2EE900EAA5BF /* ASMToast.swift in Sources */,
 				282243B724BA2EE900EAA5BF /* ASMToastView.swift in Sources */,
+				2804981D2507786200F90BEC /* ASMTProps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
