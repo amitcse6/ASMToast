@@ -13,9 +13,11 @@ public class ASMToastView: UIView {
     var myScrollView: UIScrollView?
     var myStackView: UIStackView?
     var container: UIView?
+    var imageView: UIImageView?
     var messageLabel: UILabel?
     var iscCornerRadius = true
-    var padding: CGFloat = 8
+    var paddingX: CGFloat = 8
+    var paddingY: CGFloat = 8
     var message: String?
     var props: ASMTProps?
     
@@ -33,14 +35,22 @@ public class ASMToastView: UIView {
         super.init(frame: CGRect.zero)
         self.message = message
         self.props = props
+        self.paddingX = props?.padding?.paddingX ?? 8
+        self.paddingY = props?.padding?.paddingY ?? 8
         setup()
     }
+    
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         if iscCornerRadius {
-            let cornerRadius: CGFloat = 10 //(container?.bounds.size.height ?? 0 - padding*2) * 0.5
-            container?.layer.cornerRadius = cornerRadius
+            if props?.isCornerRadius50P ?? false {
+                let cornerRadius: CGFloat = (self.bounds.size.height) * 0.5
+                container?.layer.cornerRadius = cornerRadius
+            }else {
+                let cornerRadius: CGFloat = 10 //(container?.bounds.size.height ?? 0 - padding*2) * 0.5
+                container?.layer.cornerRadius = cornerRadius
+            }
             myScrollView?.contentSize = CGSize(width: myScrollView?.bounds.width ?? 0, height: myStackView?.bounds.height ?? 0)
         }
     }
@@ -78,6 +88,13 @@ public class ASMToastView: UIView {
         setBordeColor(UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0))
         setBordeWidth(1.0)
         
+        imageView = UIImageView()
+        container?.addSubview(imageView.unsafelyUnwrapped)
+        imageView?.contentMode = .scaleAspectFit
+        if let image = props?.imageInfo?.image {
+            imageView?.image = image
+        } 
+        
         messageLabel = UILabel()
         container?.addSubview(messageLabel.unsafelyUnwrapped)
         messageLabel?.numberOfLines = props?.numberOfLines ?? 0
@@ -111,11 +128,20 @@ public class ASMToastView: UIView {
             subBackViewHeightConstraint?.priority = UILayoutPriority(rawValue: 250)
             subBackViewHeightConstraint?.isActive = true
             
+            imageView?.translatesAutoresizingMaskIntoConstraints = false
+            imageView?.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor, constant: paddingY).isActive = true
+            imageView?.leftAnchor.constraint(equalTo: container.unsafelyUnwrapped.leftAnchor, constant: (props?.imageInfo?.imageViewWidth ?? 0) > 0 ? paddingX : 0).isActive = true
+            imageView?.bottomAnchor.constraint(equalTo: container.unsafelyUnwrapped.bottomAnchor, constant: -paddingY).isActive = true
+            imageView?.widthAnchor.constraint(equalToConstant: props?.imageInfo?.imageViewWidth ?? 0).isActive = true
+            if let imageViewHeight = props?.imageInfo?.imageViewHeight {
+                imageView?.heightAnchor.constraint(equalToConstant: imageViewHeight).isActive = true
+            }
+            
             messageLabel?.translatesAutoresizingMaskIntoConstraints = false
-            messageLabel?.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor, constant: padding).isActive = true
-            messageLabel?.leftAnchor.constraint(equalTo: container.unsafelyUnwrapped.leftAnchor, constant: padding).isActive = true
-            messageLabel?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -padding).isActive = true
-            messageLabel?.bottomAnchor.constraint(equalTo: container.unsafelyUnwrapped.bottomAnchor, constant: -padding).isActive = true
+            messageLabel?.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor, constant: paddingY).isActive = true
+            messageLabel?.leftAnchor.constraint(equalTo: imageView.unsafelyUnwrapped.rightAnchor, constant: paddingX).isActive = true
+            messageLabel?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -paddingX).isActive = true
+            messageLabel?.bottomAnchor.constraint(equalTo: container.unsafelyUnwrapped.bottomAnchor, constant: -paddingY).isActive = true
         } else {
             // Fallback on earlier versions
         }

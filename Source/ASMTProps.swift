@@ -16,9 +16,13 @@ public class ASMTProps {
     public var numberOfLines: Int?
     public var textAlignment: NSTextAlignment?
     public var toastAlignment: ASMToastAlignment?
+    public var isCornerRadius50P: Bool?
+    public var isToHororozontalEdge: Bool?
+    public var containerHeight: CGFloat?
+    public var padding: ASMTPadding?
+    public var imageInfo: ASMTImageInfo?
     
-    
-    public init(_ backgroundColor: UIColor?, _ containerBackgroundColor: UIColor?, _ textColor: UIColor?, _ font: UIFont, _ numberOfLines: Int?, _ textAlignment: NSTextAlignment?, _ toastAlignment: ASMToastAlignment?) {
+    public init(_ backgroundColor: UIColor?, _ containerBackgroundColor: UIColor?, _ textColor: UIColor?, _ font: UIFont, _ numberOfLines: Int?, _ textAlignment: NSTextAlignment?, _ toastAlignment: ASMToastAlignment?, _ isCornerRadius50P: Bool?, _ isToHororozontalEdge: Bool?, _ padding: ASMTPadding?, _ imageInfo: ASMTImageInfo?) {
         self.backgroundColor = backgroundColor
         self.containerBackgroundColor = containerBackgroundColor
         self.textColor = textColor
@@ -26,6 +30,10 @@ public class ASMTProps {
         self.numberOfLines = numberOfLines
         self.textAlignment = textAlignment
         self.toastAlignment = toastAlignment
+        self.isCornerRadius50P = isCornerRadius50P
+        self.isToHororozontalEdge = isToHororozontalEdge
+        self.padding = padding
+        self.imageInfo = imageInfo
     }
     
     public init(_ containerBackgroundColor: UIColor?, _ textColor: UIColor?, _ font: UIFont, _ numberOfLines: Int?, _ textAlignment: NSTextAlignment?, _ toastAlignment: ASMToastAlignment?) {

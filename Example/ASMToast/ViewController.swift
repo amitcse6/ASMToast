@@ -24,11 +24,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func shortMessage(_ sender: Any) {
-        ASMToast.show("Insert successfully!", ASMTProps(.gray))
+        ASMToast.show("Insert successfully!")
     }
     
     @IBAction func mediumMessage(_ sender: Any) {
-        ASMToast.show("Authentication failed! please check your username or password.")
+        let props = ASMTProps(.clear, .gray, .black, UIFont.systemFont(ofSize: 15), 0, .center, .bottom, true, true, ASMTPadding(20, 8), ASMTImageInfo(UIImage(named: "apple"), 50, 50))
+        ASMToast.show("Authentication failed! please check your username or password.", props)
     }
     
     @IBAction func largeMessage(_ sender: Any) {

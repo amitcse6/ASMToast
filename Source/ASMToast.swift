@@ -35,13 +35,18 @@ public class ASMToast: NSObject {
     var withDuration: TimeInterval = 3
     var delay: TimeInterval = 1
     
-    private func show(_ message: String?, _ props: ASMTProps? = nil) {
+    private func show(_ message: String?,  _ props: ASMTProps? = nil) {
         if let viewController = ASMToast.topMostVC {
             toastView = ASMToastView(message, props)
             viewController.view.addSubview(toastView.unsafelyUnwrapped)
             
             if #available(iOS 11.0, *) {
                 toastView?.translatesAutoresizingMaskIntoConstraints = false
+                if props?.isToHororozontalEdge ?? false {
+                    toastView?.leftAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.leftAnchor, constant: rootPadding).isActive = true
+                    toastView?.rightAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.rightAnchor, constant: -rootPadding).isActive = true
+                }
+                
                 switch props?.toastAlignment ?? ASMToast.toastAlignment {
                 case .center:
                     toastView?.topAnchor.constraint(greaterThanOrEqualTo: viewController.view.safeAreaLayoutGuide.topAnchor, constant: rootPadding).isActive = true
