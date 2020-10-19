@@ -77,7 +77,7 @@ public class ASMToastView: UIView {
         
         myStackView = UIStackView()
         myScrollView?.addSubview(myStackView.unsafelyUnwrapped)
-        myStackView?.backgroundColor = .red
+        myStackView?.backgroundColor = .clear
         myStackView?.axis = .vertical
         
         container = UIView()
